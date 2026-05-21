@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "variables.schema.json",
+  "title": "Variable System Definition",
+  "description": "Variable definitions for a WebGAL visual novel. Output of the Narrative Designer (Phase 1).",
+  "type": "object",
+  "required": ["attitude_variables", "event_flags"],
+  "properties": {
+    "attitude_variables": {
+      "type": "array",
+      "description": "Long-term behavioral dimensions (0-100 scale)",
+      "items": {
+        "type": "object",
+        "required": ["id", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "description": "Variable name used in setVar and -when= conditions"
+          },
+          "range": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer" }, "default": [0, 100] },
+          "default": { "type": "integer", "default": 0 },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "event_flags": {
+      "type": "array",
+      "description": "Binary route/event tracking variables (0/1)",
+      "items": {
+        "type": "object",
+        "required": ["id", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "values": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer", "enum": [0, 1] }, "default": [0, 1] },
+          "default": { "type": "integer", "enum": [0], "default": 0 },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  },
+  "maxProperties": 14,
+  "description": "Total combined variables (attitude + event + meta) must not exceed 12. Accumulator variables are exempt."
+}

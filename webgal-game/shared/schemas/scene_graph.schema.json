@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "scene_graph.schema.json",
+  "title": "Scene Graph",
+  "description": "High-level game structure as a directed graph. Output of the Narrative Designer (Phase 1).",
+  "type": "object",
+  "required": ["scenes", "connections"],
+  "properties": {
+    "scenes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": ["id", "file"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique scene identifier" },
+          "file": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]+\\.txt$",
+            "description": "Output filename in public/game/scene/"
+          },
+          "description": { "type": "string", "description": "One-line summary of scene content" },
+          "act": { "type": "integer", "minimum": 0, "description": "Act number (0=prologue, 1-N=acts)" },
+          "is_ending": { "type": "boolean", "default": false },
+          "is_entry": { "type": "boolean", "default": false, "description": "Entry point — exactly one scene should be the entry" }
+        }
+      }
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": { "type": "string", "description": "Source scene id" },
+          "to": { "type": "string", "description": "Target scene id" },
+          "condition": {
+            "oneOf": [
+              { "type": "null", "description": "Unconditional transition" },
+              { "type": "string", "description": "Condition expression (e.g., 'visit_garden==1')" }
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": ["callScene", "jumpLabel", "choose_option"],
+            "default": "callScene"
+          }
+        }
+      }
+    }
+  }
+}

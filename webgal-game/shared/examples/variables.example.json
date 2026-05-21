@@ -1,0 +1,16 @@
+{
+  "$schema": "../schemas/variables.schema.json",
+  "description": "Example: variable system for 归去来兮",
+  "attitude_variables": [
+    { "id": "inner_peace", "range": [0, 100], "default": 0, "description": "回归田园的坚定程度，高→彻底放弃仕途，低→可能重返官场" },
+    { "id": "empathy", "range": [0, 100], "default": 0, "description": "对他人处境的理解，高→更温暖的人际关系，低→疏离孤独" },
+    { "id": "openness", "range": [0, 100], "default": 0, "description": "对新生活的接纳程度，高→积极建设田园，低→消极度日" },
+    { "id": "creativity", "range": [0, 100], "default": 0, "description": "创作与分享欲，高→写诗传世，低→默默归隐" }
+  ],
+  "event_flags": [
+    { "id": "resigned_directly", "values": [0, 1], "default": 0, "description": "是否当面直辞（vs 留书离去）" },
+    { "id": "shared_poetry", "values": [0, 1], "default": 0, "description": "是否与他人分享过诗歌" },
+    { "id": "family_focus", "values": [0, 1], "default": 0, "description": "是否以家庭为重心" },
+    { "id": "helped_village", "values": [0, 1], "default": 0, "description": "是否帮助过村民" }
+  ]
+}

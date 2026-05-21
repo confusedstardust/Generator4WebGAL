@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "characters.schema.json",
+  "title": "Character Definitions",
+  "description": "Character definitions for a WebGAL visual novel. Output of the Narrative Designer (Phase 1).",
+  "type": "object",
+  "required": ["characters"],
+  "properties": {
+    "characters": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "role", "personality", "motivation", "speech_style", "emotional_arc"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "description": "Machine-readable ID used as speaker name in scripts and asset filenames"
+          },
+          "name": { "type": "string", "description": "Display name (Chinese or English)" },
+          "role": {
+            "type": "string",
+            "enum": ["protagonist", "supporting", "antagonist", "catalyst", "chorus"],
+            "description": "Narrative role. Only one protagonist allowed."
+          },
+          "personality": { "type": "string", "description": "Core personality traits" },
+          "motivation": { "type": "string", "description": "What drives this character" },
+          "speech_style": { "type": "string", "description": "How they talk (formal, rustic, poetic, etc.)" },
+          "emotional_arc": { "type": "string", "description": "Emotional journey across the game" },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["with", "dynamic"],
+              "properties": {
+                "with": { "type": "string", "description": "Target character id" },
+                "dynamic": { "type": "string", "description": "Relationship dynamic description" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

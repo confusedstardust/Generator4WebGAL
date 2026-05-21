@@ -1,0 +1,29 @@
+{
+  "$schema": "../schemas/scene_graph.schema.json",
+  "description": "Example: scene graph for 归去来兮",
+  "scenes": [
+    { "id": "start", "file": "start.txt", "description": "入口：变量初始化，开场独白，督邮来访触发辞官决定", "act": 0, "is_entry": true },
+    { "id": "act1_office", "file": "act1_office.txt", "description": "衙署：面对督邮，关键选择——直辞/留书/周旋", "act": 1 },
+    { "id": "act2_journey", "file": "act2_journey.txt", "description": "归途：返乡路上遇见老农，分享田园智慧", "act": 2 },
+    { "id": "act3_homecoming", "file": "act3_homecoming.txt", "description": "到家：与妻子重逢，面对家庭现实", "act": 3 },
+    { "id": "act4_pastoral_life", "file": "act4_pastoral_life.txt", "description": "田园生活：与儿子务农，诗歌交流，帮助村民", "act": 4 },
+    { "id": "act5_climax", "file": "act5_climax.txt", "description": "高潮：结尾分支判断——根据累积变量分叉到不同结局", "act": 5 },
+    { "id": "ending_peach_spring", "file": "ending_peach_spring.txt", "description": "桃源诗人结局：最佳结局", "act": 6, "is_ending": true },
+    { "id": "ending_pastoral", "file": "ending_pastoral.txt", "description": "成功的田园生活：情感结局", "act": 6, "is_ending": true },
+    { "id": "ending_true_return", "file": "ending_true_return.txt", "description": "真正的回归：人物结局", "act": 6, "is_ending": true },
+    { "id": "ending_between_worlds", "file": "ending_between_worlds.txt", "description": "两界之间：失败结局", "act": 6, "is_ending": true },
+    { "id": "ending_epilogue", "file": "ending_epilogue.txt", "description": "后记：默认结局（归去来兮辞原文收尾）", "act": 6, "is_ending": true }
+  ],
+  "connections": [
+    { "from": "start", "to": "act1_office", "condition": null, "type": "callScene" },
+    { "from": "act1_office", "to": "act2_journey", "condition": null, "type": "callScene" },
+    { "from": "act2_journey", "to": "act3_homecoming", "condition": null, "type": "callScene" },
+    { "from": "act3_homecoming", "to": "act4_pastoral_life", "condition": null, "type": "callScene" },
+    { "from": "act4_pastoral_life", "to": "act5_climax", "condition": null, "type": "callScene" },
+    { "from": "act5_climax", "to": "ending_peach_spring", "condition": "endingCheck1>=3", "type": "jumpLabel" },
+    { "from": "act5_climax", "to": "ending_pastoral", "condition": "inner_peace>=60", "type": "jumpLabel" },
+    { "from": "act5_climax", "to": "ending_true_return", "condition": "inner_peace>=50", "type": "jumpLabel" },
+    { "from": "act5_climax", "to": "ending_between_worlds", "condition": "openness>=30", "type": "jumpLabel" },
+    { "from": "act5_climax", "to": "ending_epilogue", "condition": null, "type": "fallback" }
+  ]
+}

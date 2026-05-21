@@ -1,0 +1,59 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "description": "Example: characters from 归去来兮 (Return to the Field), based on Tao Yuanming's poem",
+  "characters": [
+    {
+      "id": "tao_yuanming",
+      "name": "陶渊明",
+      "role": "protagonist",
+      "personality": "理想主义，厌倦官场，热爱田园生活，内心矛盾但最终坚定",
+      "motivation": "摆脱官场束缚，回归田园，寻找内心的自由与平静",
+      "speech_style": "文雅含蓄，常引古诗，内心独白丰富",
+      "emotional_arc": "压抑→挣扎→释然→坚定→宁静",
+      "relationships": [
+        { "with": "wife", "dynamic": "相互扶持，历经分离后更加珍惜" },
+        { "with": "inspector", "dynamic": "对立——权力压迫与个人尊严的冲突" },
+        { "with": "old_farmer", "dynamic": "淳朴的邻里关系，田园生活的引路人" }
+      ]
+    },
+    {
+      "id": "wife",
+      "name": "妻子",
+      "role": "supporting",
+      "personality": "温柔坚韧，支持丈夫选择同时也担忧家庭生计",
+      "motivation": "守护家庭，支持丈夫归于本心",
+      "speech_style": "温婉家常，细致入微",
+      "emotional_arc": "担忧→理解→支持→共度田园岁月",
+      "relationships": [
+        { "with": "tao_yuanming", "dynamic": "夫妻情深，从忧心到共同面对" }
+      ]
+    },
+    {
+      "id": "inspector",
+      "name": "督邮",
+      "role": "antagonist",
+      "personality": "冷酷务实，忠君履职但缺乏人情",
+      "motivation": "执行上级命令，检查县令工作",
+      "speech_style": "公事公办，不苟言笑",
+      "emotional_arc": "施压→发现真相→沉默放行（内心触动）"
+    },
+    {
+      "id": "old_farmer",
+      "name": "老农",
+      "role": "catalyst",
+      "personality": "智慧朴实的农村长者，洞悉世事",
+      "motivation": "传递田园生活的智慧与美学",
+      "speech_style": "俚语俗谚，简单但有哲理",
+      "emotional_arc": "初次见面→分享农耕智慧→成为田园生活的象征"
+    },
+    {
+      "id": "son",
+      "name": "儿子",
+      "role": "chorus",
+      "personality": "纯真好奇，对父亲崇拜，对田园生活充满热情",
+      "motivation": "与父亲共度时光，学习务农",
+      "speech_style": "天真活泼，直率表达",
+      "emotional_arc": "思念→重逢喜悦→陪伴父亲开创新生活"
+    }
+  ]
+}

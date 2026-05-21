@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/ending_matrix.schema.json",
+  "description": "Example: ending matrix for 归去来兮 — exactly 5 endings",
+  "endings": [
+    {
+      "id": "ending_peach_spring",
+      "file": "ending_peach_spring.txt",
+      "category": "best",
+      "priority": 1,
+      "emotional_tone": "超脱圆满，诗意栖居",
+      "trigger": {
+        "type": "accumulator",
+        "conditions": [
+          { "variable": "inner_peace", "operator": ">=", "value": 60 },
+          { "variable": "creativity", "operator": ">=", "value": 50 },
+          { "variable": "empathy", "operator": ">=", "value": 50 }
+        ],
+        "required_count": 3
+      },
+      "narrative_meaning": "完全实现了归隐理想，兼得诗意、田园与人间温暖，如陶渊明笔下桃花源般的美好境界"
+    },
+    {
+      "id": "ending_pastoral",
+      "file": "ending_pastoral.txt",
+      "category": "emotional",
+      "priority": 2,
+      "emotional_tone": "温暖满足，人间烟火",
+      "trigger": {
+        "type": "single_flag",
+        "conditions": [
+          { "variable": "inner_peace", "operator": ">=", "value": 60 }
+        ]
+      },
+      "narrative_meaning": "融入了田园生活，虽然未必写出流传千古的诗篇，但找到了内心的安宁与家庭的幸福"
+    },
+    {
+      "id": "ending_true_return",
+      "file": "ending_true_return.txt",
+      "category": "character",
+      "priority": 3,
+      "emotional_tone": "平静释然，与世无争",
+      "trigger": {
+        "type": "single_flag",
+        "conditions": [
+          { "variable": "inner_peace", "operator": ">=", "value": 50 }
+        ]
+      },
+      "narrative_meaning": "回归了家园，获得平静。个人的归隐虽不轰轰烈烈，却是一场真实的自我救赎"
+    },
+    {
+      "id": "ending_between_worlds",
+      "file": "ending_between_worlds.txt",
+      "category": "failure",
+      "priority": 4,
+      "emotional_tone": "无所适从，两界徘徊",
+      "trigger": {
+        "type": "single_flag",
+        "conditions": [
+          { "variable": "openness", "operator": ">=", "value": 30 }
+        ]
+      },
+      "narrative_meaning": "离开了官场，却未能在田园中找到归属。徘徊于两个世界之间，隐喻着理想与现实不可调和的困境"
+    },
+    {
+      "id": "ending_epilogue",
+      "file": "ending_epilogue.txt",
+      "category": "default",
+      "priority": 5,
+      "emotional_tone": "古今对话，致敬经典",
+      "trigger": { "type": "fallback" },
+      "narrative_meaning": "以归去来兮辞原文收尾，将个人故事升华为文化传承，致敬陶渊明的千古绝唱"
+    }
+  ]
+}

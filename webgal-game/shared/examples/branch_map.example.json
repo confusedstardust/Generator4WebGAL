@@ -1,0 +1,61 @@
+{
+  "$schema": "../schemas/branch_map.schema.json",
+  "description": "Example: branch map for 归去来兮 — 5 major choice points",
+  "branches": [
+    {
+      "id": "choice_resign_method",
+      "scene": "act1_office",
+      "description": "如何面对督邮——决定后续人际态度走向",
+      "depth": 1,
+      "options": [
+        { "label": "当面直辞", "sets": { "resigned_directly": 1 }, "adds": { "inner_peace": 20, "openness": 10 }, "next_scene": "act2_journey" },
+        { "label": "留书而去", "adds": { "inner_peace": 10, "creativity": 15 }, "next_scene": "act2_journey" },
+        { "label": "暂且周旋", "adds": { "empathy": 10, "openness": 5 }, "next_scene": "act2_journey" }
+      ]
+    },
+    {
+      "id": "choice_farmer_encounter",
+      "scene": "act2_journey",
+      "description": "归途遇见老农——决定对田园生活的态度",
+      "depth": 1,
+      "options": [
+        { "label": "虚心请教农事", "adds": { "openness": 20, "inner_peace": 10 }, "next_scene": "act3_homecoming" },
+        { "label": "与之赋诗交流", "sets": { "shared_poetry": 1 }, "adds": { "creativity": 20 }, "next_scene": "act3_homecoming" },
+        { "label": "沉默赶路", "adds": { "inner_peace": 5 }, "next_scene": "act3_homecoming" }
+      ]
+    },
+    {
+      "id": "choice_homecoming",
+      "scene": "act3_homecoming",
+      "description": "回家后面对妻子——决定家庭关系方向",
+      "depth": 1,
+      "options": [
+        { "label": "坦诚相告未来打算", "sets": { "family_focus": 1 }, "adds": { "empathy": 15, "openness": 10 }, "next_scene": "act4_pastoral_life" },
+        { "label": "先安慰妻子情绪", "adds": { "empathy": 20, "inner_peace": 5 }, "next_scene": "act4_pastoral_life" },
+        { "label": "独自沉思", "adds": { "inner_peace": 15, "creativity": 10 }, "next_scene": "act4_pastoral_life" }
+      ]
+    },
+    {
+      "id": "choice_village_help",
+      "scene": "act4_pastoral_life",
+      "description": "村民求助——决定社区关系",
+      "depth": 2,
+      "options": [
+        { "label": "慷慨相助", "sets": { "helped_village": 1 }, "adds": { "empathy": 20, "openness": 15 }, "next_scene": "act5_climax" },
+        { "label": "教他们自己解决问题", "adds": { "creativity": 15, "inner_peace": 10 }, "next_scene": "act5_climax" },
+        { "label": "婉拒", "adds": { "inner_peace": 5 }, "next_scene": "act5_climax" }
+      ]
+    },
+    {
+      "id": "choice_poetry_share",
+      "scene": "act4_pastoral_life",
+      "description": "儿子问起诗歌——决定创作与传承",
+      "depth": 2,
+      "options": [
+        { "label": "将归去来兮辞教给儿子", "sets": { "shared_poetry": 1 }, "adds": { "creativity": 20, "family_focus": 0 }, "next_scene": "act5_climax" },
+        { "label": "埋首田园，不写诗了", "adds": { "inner_peace": 15, "openness": 5 }, "next_scene": "act5_climax" },
+        { "label": "写下来留在书中", "adds": { "creativity": 15, "inner_peace": 10 }, "next_scene": "act5_climax" }
+      ]
+    }
+  ]
+}

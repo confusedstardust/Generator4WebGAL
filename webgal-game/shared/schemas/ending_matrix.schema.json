@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "ending_matrix.schema.json",
+  "title": "Ending Matrix",
+  "description": "3-5 endings with trigger conditions and narrative meaning. Output of the Narrative Designer (Phase 1).",
+  "type": "object",
+  "required": ["endings"],
+  "properties": {
+    "endings": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "description": "3-5 endings required",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "priority", "emotional_tone", "trigger", "narrative_meaning"],
+        "properties": {
+          "id": { "type": "string", "description": "Ending identifier" },
+          "file": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]+\\.txt$",
+            "description": "Scene filename for this ending"
+          },
+          "category": {
+            "type": "string",
+            "enum": ["best", "emotional", "character", "failure", "default"],
+            "description": "One of the 5 required ending categories"
+          },
+          "priority": { "type": "integer", "minimum": 1, "maximum": 5, "description": "Check priority (1=highest, checked first)" },
+          "emotional_tone": { "type": "string", "description": "Emotional quality of this ending" },
+          "trigger": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "type": "string", "enum": ["accumulator", "single_flag", "threshold", "fallback"] },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "variable": { "type": "string" },
+                    "operator": { "type": "string", "enum": [">=", "==", "<", "<=", ">"] },
+                    "value": { "type": "integer" }
+                  }
+                }
+              },
+              "required_count": { "type": "integer", "description": "For accumulator type: how many conditions must be met" }
+            }
+          },
+          "narrative_meaning": { "type": "string", "description": "What this ending means thematically" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "branch_map.schema.json",
+  "title": "Branch Map",
+  "description": "All choice points with options and consequences. Output of the Narrative Designer (Phase 1).",
+  "type": "object",
+  "required": ["branches"],
+  "properties": {
+    "branches": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["id", "scene", "options"],
+        "properties": {
+          "id": { "type": "string", "description": "Unique choice point identifier" },
+          "scene": { "type": "string", "description": "Scene id from scene_graph where this choice appears" },
+          "description": { "type": "string", "description": "Narrative context for this choice" },
+          "depth": { "type": "integer", "minimum": 1, "maximum": 2, "description": "Branch depth level (1 or 2)" },
+          "options": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": ["label", "next_scene"],
+              "properties": {
+                "label": { "type": "string", "description": "Display text for this option (Chinese or English)" },
+                "sets": {
+                  "type": "object",
+                  "description": "Variable assignments triggered by this option",
+                  "additionalProperties": { "type": "integer" }
+                },
+                "adds": {
+                  "type": "object",
+                  "description": "Variable increments triggered by this option",
+                  "additionalProperties": { "type": "integer" }
+                },
+                "next_scene": { "type": "string", "description": "Scene id to transition to" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
