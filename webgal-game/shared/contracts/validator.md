@@ -69,6 +69,7 @@ Phase 4 of the pipeline. Validates the complete game against all constraints. Pr
 - [ ] Every `changeBg:*.webp` filename exists in `public/game/background/`
 - [ ] Every `changeFigure:*.webp` filename exists in `public/game/figure/`
 - [ ] Every `miniAvatar:*.webp` filename exists in `public/game/figure/`
+- [ ] Every `bgm:*.mp3` filename exists in `public/game/bgm/`
 - [ ] Every `callScene:*.txt` target exists in `public/game/scene/`
 - [ ] All speaker names match character IDs in `characters.json`
 

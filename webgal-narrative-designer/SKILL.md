@@ -1,12 +1,12 @@
 ---
 name: webgal-narrative-designer
 description: |
-  Design the high-level narrative architecture for WebGAL visual novels.
-  Responsible for characters, branching structure, variable systems,
-  emotional pacing, scene graphs, and ending matrices.
+  Generates structured narrative architecture for WebGAL.
 
-  This skill does NOT write final WebGAL scene scripts.
-  This skill produces structured narrative planning artifacts only.
+  Produces a structured narrative design including: characters, variables, scene graph, branch structure, and ending matrix.
+
+  This skill is strictly limited to narrative planning.
+  It MUST NOT generate WebGAL scripts, scene implementation files, or asset prompts.
 allowed-tools:
   - Read
   - Write
@@ -47,7 +47,7 @@ Identify:
 
 ### Phase 2 — Character Design
 
-Generate 3-7 major characters. For each define: name, role, personality,
+Generate characters. For each define: name, role, personality,
 motivation, internal conflict, relationship dynamics, speech style, emotional arc.
 
 - Every character MUST have a distinct narrative role
@@ -70,9 +70,7 @@ Examples: shared_secret, accepted_invitation, protected_character.
 
 Design: Opening → Early routes → Mid-game convergence → Route divergence → Climax → Endings.
 
-- Minimum 5 major scenes, maximum 15 total
 - Every route MUST contain meaningful divergence
-- Branches SHOULD reconverge when possible
 - Maximum branch depth: 2
 
 ### Phase 5 — Ending Matrix Design
@@ -138,13 +136,3 @@ Prefer reconvergence. If structure becomes too complex:
 4. Simplify variable dependencies
 
 Narrative clarity > route quantity.
-
----
-
-## Boundaries
-
-- Do NOT write .txt scene files
-- Do NOT generate WebGAL syntax (choose/jumpLabel/callScene)
-- Do NOT generate image prompts or asset descriptions
-- Do NOT validate — that's the Validator's job
-- This agent defines narrative architecture ONLY

@@ -8,9 +8,9 @@ Non-negotiable numerical constraints for WebGAL game design. Every sub-agent MUS
 
 | Constraint | Value |
 |-----------|-------|
-| Minimum characters | 3 |
+| Minimum characters | 2 |
 | Maximum characters | 7 |
-| Recommended range | 3-5 |
+| Recommended range | 2-5 |
 
 Every character MUST have a distinct narrative role. No duplicate personality archetypes.
 
@@ -20,8 +20,8 @@ Every character MUST have a distinct narrative role. No duplicate personality ar
 
 | Constraint | Value |
 |-----------|-------|
-| Minimum choice points | 5 |
-| Maximum major branches | 5 |
+| Minimum choice points | 3 |
+| Maximum major branches | 3 |
 | Maximum branch depth | 2 |
 | Options per choice point | 3-4 |
 
@@ -41,9 +41,9 @@ choose → branch A / branch B / branch C → converge → continue
 
 | Constraint | Value |
 |-----------|-------|
-| Minimum endings | 3 |
-| Maximum endings | 5 |
-| Minimum content per ending | 30 lines |
+| Minimum endings | 1 |
+| Maximum endings | 3        |
+| Minimum content per ending | 10 lines |
 
 Required ending categories:
 1. Best/Perfect ending (highest priority check)
@@ -112,9 +112,9 @@ Ending thresholds SHOULD remain within realistic route budgets.
 
 | Constraint | Value |
 |-----------|-------|
-| Minimum lines per scene | 30 |
-| Maximum lines per scene | 300 |
-| Minimum lines per ending | 30 |
+| Minimum lines per scene | 15 |
+| Maximum lines per scene | 60 |
+| Minimum lines per ending | 20 |
 | Minimum lines between choice points | 5 |
 
 ---

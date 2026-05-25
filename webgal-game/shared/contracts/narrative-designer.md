@@ -6,14 +6,14 @@ Phase 1 of the pipeline. Designs the high-level narrative architecture. Produces
 
 ## Reads
 
-| Source | Path | Description |
-|--------|------|-------------|
-| Source material | (conversation) | The poem, story, concept, or historical event to adapt |
-| Limits | `~/.claude/skills/webgal-game/shared/constraints/limits.md` | Enforce all hard limits (characters, branches, variables, endings) |
+| Source | Path |
+|--------|------|
+| Source material | (conversation) |
+| Limits | `~/.claude/skills/webgal-game/shared/constraints/limits.md` |
 
 ---
 
-## Produces (all to `shared/state/`)
+## Produces (all to `current project path/state/`)
 
 | File | Description |
 |------|-------------|
@@ -111,7 +111,7 @@ None. This is the first Phase in the pipeline.
 
 ## Success Criteria
 
-- All 5 JSON files written to `shared/state/`
+- All 5 JSON files written to `current project path/state/`
 - All characters have distinct roles (no duplicates)
 - Exactly 5 endings, all reachable
 - All variables use 0/1 for booleans, not true/false

@@ -15,13 +15,6 @@ allowed-tools:
   - Grep
 ---
 
-# WebGAL VN Scene Writer
-
-Converts narrative architecture into playable WebGAL scripts. Reads planning
-artifacts, writes `.txt` files, and verifies all asset references resolve.
-
----
-
 ## Contract & Constraints
 
 Read before starting:
@@ -134,8 +127,7 @@ jumpLabel:ending_lonely_path -when=empathy<30;
 jumpLabel:ending_canon_path;
 ```
 
-Each ending file must be ≥30 lines. Use `end;` in ending files (they are
-terminal — no return expected).
+Each ending file must be ≥30 lines. Use `end;`
 
 ---
 
@@ -182,6 +174,63 @@ miniAvatar:miniavatar_tao_yuanming.webp;
 陶渊明:我……我辞官了。
 ```
 
+## Figure Styling Rules
+
+### Rule 1: Fade Out All Figures Before Scene Transition
+
+Before every `callScene` command, all currently displayed figures MUST be faded out and cleared. Use `setTransform` to fade each position to alpha 0, then clear them:
+
+```
+; Fade out all figures before scene transition
+setTransform:{"alpha":0,"duration":600,"ease":"easeIn"} -target=fig-left;
+setTransform:{"alpha":0,"duration":600,"ease":"easeIn"} -target=fig-center;
+setTransform:{"alpha":0,"duration":600,"ease":"easeIn"} -target=fig-right;
+changeFigure:none -left -next;
+changeFigure:none -next;
+changeFigure:none -right -next;
+```
+
+Only target positions that actually have an active figure. For free figures (with `-id=`), use `-target=<id>` instead. Do NOT fade out figures that are already gone.
+
+### Rule 2: Figure Entrance Animation (Scale Bounce)
+
+Every `changeFigure` that adds a character MUST include a `-transform` entrance animation.
+
+Use scale bounce only — scale from 70% to 100% over 700ms with `backOut` easing. The `-left` / `-right` / center slot flags already determine the figure's on-screen position.
+
+Template per position:
+
+```
+; Left-positioned figure
+changeFigure:figure_xxx.webp -left -transform={"scale":{"x":0.7,"y":0.7},"duration":700,"ease":"backOut"} -next;
+
+; Right-positioned figure
+changeFigure:figure_xxx.webp -right -transform={"scale":{"x":0.7,"y":0.7},"duration":700,"ease":"backOut"} -next;
+
+; Center figure (no position flag)
+changeFigure:figure_xxx.webp -transform={"scale":{"x":0.7,"y":0.7},"duration":700,"ease":"backOut"} -next;
+```
+
+Free figures (with `-id=`) use the same scale-only pattern.
+
+### Rule 3: Figure Zoom Emphasis Before Player Choice
+
+Immediately before every `choose:` command, the protagonist's figure (the character making the decision) MUST be emphasized with a scale-up animation. The target depends on where the protagonist is positioned:
+
+```
+; Protagonist zoom emphasis before choice
+setTransform:{"scale":{"x":1.10,"y":1.10},"duration":400,"ease":"backOut"} -target=fig-center;
+```
+
+Use the correct target key (`fig-left`, `fig-center`, `fig-right`, or free figure id) matching the protagonist's current position. After the choice (inside each branch label), optionally reset the scale:
+
+```
+; Reset scale after choice
+setTransform:{"scale":{"x":1.0,"y":1.0},"duration":300,"ease":"easeOut"} -target=fig-center;
+```
+
+Reset is optional — only add it if the figure stays on screen after the choice and will be used in subsequent dialogue.
+
 Narration (`:text`) and unnamed speakers skip the avatar.
 
 ### Branching Pattern
@@ -196,8 +245,6 @@ Every `choose` → unique content per option → converge:
 
 ## Boundaries
 
-- Do NOT modify planning artifacts in `shared/state/`
 - Do NOT generate or modify assets
-- Reference ONLY assets that exist on disk — verify with `ls`/`Glob` first
-- Do NOT validate — that's the Validator's job
+- Do NOT validate
 - `end;` only in `start.txt` and ending files

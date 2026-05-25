@@ -64,28 +64,6 @@ All assets live under `public/game/`.
 
 ---
 
-## Asset Files — Central Repository
-
-For the reusable asset repository at `C:\SelfCreated\MyProject\assets repo\`.
-
-### Figure
-- Pattern: `figure_{era}_{role}_{name}_{age}_{clothing}_{pose}.webp`
-- Example: `figure_tang_scholar_bai_juyi_middle_aged_cyan_robe_standing.webp`
-
-### Background
-- Pattern: `bg_{time}_{place}_{mood}_{key_elements}.webp`
-- Example: `bg_autumn_night_xunyang_river_moon_maple_reed.webp`
-
-### CG
-- Pattern: `cg_{event}_{character}_{key_elements}.webp`
-- Example: `cg_pipa_closeup_feminine_hands_playing_strings.webp`
-
-### Avatar
-- Pattern: `avatar_{role_description}.webp`
-- Example: `avatar_tang_scholar_bai_juyi_cyan_robe.webp`
-
----
-
 ## Variable Names
 
 - Format: `snake_case`, lowercase

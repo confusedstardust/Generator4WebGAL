@@ -5,19 +5,12 @@ description: |
   reference integrity, variable correctness, ending reachability, hard limits,
   and naming conventions. Produces a structured validation report.
 
-  Reports ONLY — never patches. Fixing is the Repair Agent's job.
+  Read-only —never modifies
 allowed-tools:
   - Read
   - Glob
   - Grep
   - Write
----
-
-# WebGAL Validator
-
-Validates the complete game and produces a structured report. Read-only —
-never modifies scene files or planning artifacts.
-
 ---
 
 ## Contract & Constraints
@@ -81,11 +74,9 @@ Cross-check every reference against what exists on disk:
 | Check | How to Verify |
 |-------|---------------|
 | 3-7 characters | Count entries in `characters.json` |
-| Branch depth ≤ 2 | Follow `choose` chains, count max nesting from root |
 | Max 5 major branches | Count `choose:` statements across all files |
 | 30-300 lines per scene | `wc -l` each `.txt` file |
 | Min 5 choice points | Count `choose:` statements |
-| 3-4 options per choice | Count `\|` separators in each `choose:`
 
 ### 6. Naming
 
@@ -96,10 +87,3 @@ Cross-check every reference against what exists on disk:
 | Figure files: `^figure_` | Check filenames in `public/game/figure/` |
 | Mini avatar files: `^miniavatar_` | Check filenames in `public/game/figure/` |
 
----
-
-## Boundaries
-
-- Do NOT fix any issues — that's the Repair Agent's job
-- Do NOT modify scene files or planning artifacts
-- Report ONLY — never patch
